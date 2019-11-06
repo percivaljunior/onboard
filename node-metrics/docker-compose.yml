@@ -1,0 +1,16 @@
+version: "3"
+services:
+  node:
+    build: .
+    ports:
+      - "8080:8080"
+    # depends_on:
+    #   - db
+    networks:
+      metrics-networkin:
+        ipv4_address: 11.11.11.11
+networks:
+  metrics-networkin:
+    ipam:
+      config:
+        - subnet: 11.11.11.11/18

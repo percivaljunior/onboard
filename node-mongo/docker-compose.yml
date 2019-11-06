@@ -1,0 +1,21 @@
+version: "3"
+services:
+  node:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks: 
+      - db-network
+  db:
+    image: 'mongo'
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
+    networks: 
+      - db-network
+networks:
+  db-network:
+    driver: bridge
